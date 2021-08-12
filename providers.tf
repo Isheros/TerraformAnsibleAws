@@ -6,5 +6,5 @@ provider "aws" {
 provider "aws" {
   profile = var.profile
   region  = var.region-worker
-  alias   = "region-worer"
+  alias   = "region-worker"
 }

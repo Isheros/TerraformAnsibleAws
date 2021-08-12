@@ -30,7 +30,7 @@ resource "aws_security_group" "lb-sg" {
   }
 }
 
-# Create SG for allowing TCP/8080, TCP/22 from your ip
+# Create SG for allowing TCP/8080, TCP/22 from your ip in us-east-1
 resource "aws_security_group" "jenkins-sg" {
   provider    = aws.region-master
   name        = "jenkins-sg"
@@ -47,8 +47,8 @@ resource "aws_security_group" "jenkins-sg" {
 
   ingress {
     description     = "Allow 8080 from anywhere"
-    from_port       = 8080
-    to_port         = 8080
+    from_port       = var.webserver-port
+    to_port         = var.webserver-port
     protocol        = "tcp"
     security_groups = [aws_security_group.lb-sg.id]
   }
